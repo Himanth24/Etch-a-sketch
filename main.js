@@ -5,7 +5,12 @@ container.style.gridTemplateRows = `repeat(${numberOfSquares},1fr)`;
 let amount = numberOfSquares * numberOfSquares;
 for(let i=0;i<amount;i++){
     let square = document.createElement('div');
-    square.style.backgroundColor = 'aqua';
+    square.style.backgroundColor = 'white';
     container.insertAdjacentElement('beforeend',square);
-    
+    square.addEventListener('mousedown',()=>{
+        square.style.backgroundColor = 'black';
+    })
 }
+
+
+
