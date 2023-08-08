@@ -1,4 +1,4 @@
-let numberOfSquares = prompt('enter the number');
+let numberOfSquares = prompt('Enter the number of pixels needed for the sketchbook');
 const container = document.querySelector('.container');
 container.style.gridTemplateColumns = `repeat(${numberOfSquares},1fr)`;
 container.style.gridTemplateRows = `repeat(${numberOfSquares},1fr)`;
