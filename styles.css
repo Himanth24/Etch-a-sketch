@@ -1,5 +1,6 @@
 body{
     background-color: bisque;
+    text-align: center;
 }
 
 .heading{
@@ -18,10 +19,11 @@ body{
 
 .btns{
     display: flex;
+    flex-wrap: wrap;
     flex: auto;
     margin-left: 500px;
     margin-right: 500px;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .btns-items{
@@ -29,4 +31,8 @@ body{
     height: 50px;        
     padding: 10px 20px;  
     font-size: 18px;     
+}
+
+input{
+    margin-top: 70px;
 }

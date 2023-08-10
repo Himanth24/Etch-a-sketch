@@ -1,40 +1,10 @@
-let numberOfSquares = prompt('Enter the number of pixels needed for the sketchbook');
-const container = document.querySelector('.container');
-container.style.gridTemplateColumns = `repeat(${numberOfSquares},1fr)`;
-container.style.gridTemplateRows = `repeat(${numberOfSquares},1fr)`;
-let amount = numberOfSquares * numberOfSquares;
-for(let i=0;i<amount;i++){
-    let square = document.createElement('div');
-    square.className = 'squares';
-    square.style.backgroundColor = 'white';
-    container.insertAdjacentElement('beforeend',square);
-    square.addEventListener('mousedown',()=>{
-        square.style.backgroundColor = 'black';
-    })
-}
-
-let squares = document.querySelectorAll('.squares')
+let color = 'black';
 
 function reset(){
+    let squares = document.querySelectorAll('.squares')
     squares.forEach(square => {
         square.style.backgroundColor='white';
     });
-}
-
-function eraser(){
-    squares.forEach(square=>{
-        square.addEventListener('mousedown',()=>{
-            square.style.backgroundColor='white';
-        })
-    })
-}
-
-function black(){
-    squares.forEach(square=>{
-        square.addEventListener('mousedown',()=>{
-            square.style.backgroundColor='black';
-        })
-    })
 }
 
 function getRandomColor() {
@@ -46,12 +16,41 @@ function getRandomColor() {
     return color;
 }
 
-
-function random(){
-    squares.forEach(square=>{
-        square.addEventListener('mousedown',()=>{
-            let randomColor = getRandomColor();
-            square.style.backgroundColor=randomColor;
-        })
-    })
+function changeSquare(){
+    if(color == 'random'){
+        this.style.backgroundColor = getRandomColor();
+    }
+    else{
+        this.style.backgroundColor = color;
+    }
 }
+
+function changeColor(choice){
+    color = choice;
+}
+
+
+function populateBoard(numberOfSquares){
+    reset();
+    const container = document.querySelector('.container');
+    container.style.gridTemplateColumns = `repeat(${numberOfSquares},1fr)`;
+    container.style.gridTemplateRows = `repeat(${numberOfSquares},1fr)`;
+    let amount = numberOfSquares * numberOfSquares;
+    for(let i=0;i<amount;i++){
+        let square = document.createElement('div');
+        square.className = 'squares';
+        square.style.backgroundColor = 'white';
+        container.insertAdjacentElement('beforeend',square);
+        square.addEventListener('mousedown',changeSquare);
+    }
+}
+
+function changeSize(n){
+    const slider = document.getElementById('slider');
+    const changeValue = document.getElementById('value');
+
+    changeValue.textContent = `Value: ${n}`;
+    populateBoard(n);
+}
+
+populateBoard(16);

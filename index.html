@@ -13,10 +13,13 @@
     </div>
     <div class="container"></div>
     <div class="btns">
-        <button class="btns-items" value="black" onclick="black()">Black</button>
-        <button class="btns-items" value="black" onclick="eraser()">Eraser</button>
-        <button class="btns-items" value="black" onclick="random()">Random</button>
-        <button class="btns-items" value="black" onclick="reset()" >Reset</button>
+        <button class="btns-items" value="black" onclick="changeColor('black')">Black</button>
+        <button class="btns-items" value="white" onclick="changeColor('white')">Eraser</button>
+        <button class="btns-items" value="random" onclick="changeColor('random')">Random</button>
+        <button class="btns-items" value="reset" onclick="reset()" >Reset</button>
     </div>
+    <input type="range" id="slider" value="16" min="2" max="128" step="1" onchange="changeSize(this.value)">
+    <input type="color" onchange="changeColor(this.value)">
+    <p id="value">Value: 16 </p>
 </body>
 </html>
